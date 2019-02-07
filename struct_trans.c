@@ -53,13 +53,13 @@ typedef enum {
 *@return        :error
 */
 
-error initialize( MY_LIST* pointer, uint8_t my_data)
+error initialize( MY_LIST* head, uint8_t my_data)
 {
 
 
 
-	pointer->data=my_data;
-	pointer->NEXT=NULL;
+	head->data=my_data;
+	head->NEXT=NULL;
 	return success;
 
 
@@ -79,10 +79,10 @@ error initialize( MY_LIST* pointer, uint8_t my_data)
 */
 
 
-error add_node_at_start( MY_LIST* pointer, uint8_t my_data)
+MY_LIST* add_node_at_start( MY_LIST* head, uint8_t my_data)
 {
 
-	if(pointer==NULL)
+	if(head==NULL)
 	{
 
 		return N;
@@ -93,9 +93,10 @@ error add_node_at_start( MY_LIST* pointer, uint8_t my_data)
 		MY_LIST *new_node = malloc(sizeof(MY_LIST));
 
 		new_node->data=my_data;
-		new_node->NEXT=pointer;
-		pointer=new_node;
-		return success;
+		new_node->NEXT=head;
+		head->NEXT=NULL;
+		return new_node;
+
 
 	}
 
@@ -144,7 +145,7 @@ void main()
 
 	}
 
-	c=add_node_at_start(p,10);
+	p=add_node_at_start(p,10);
 
 
 	if(c==0)
@@ -165,8 +166,11 @@ void main()
 
 	printf("Now let us traverse through the list");
 
-	printf("data is : %d\n",p->data);
+	printf("\n data is : %d\n",p->data);
 
+	p=p->NEXT;
+
+	printf("data is : %d\n",p->data);
 
 
 }
