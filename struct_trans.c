@@ -117,13 +117,36 @@ MY_LIST* add_node_at_start( MY_LIST* head, uint8_t my_data)
 */
 
 
-error add_node_at_end( MY_LIST* pointer, uint8_t data)
+error add_node_at_end( MY_LIST* head, uint8_t my_data)
 {
 
 
+	if(head==NULL)
+	{
+
+		return N;
+
+	}
+
+	else
+	{
 
 
+		while(pointer->NEXT!=NULL)
+		{
+
+			p=p->NEXT;
+
+		}
+
+		MY_LIST *new_node = malloc(sizeof(MY_LIST));
+
+		p->NEXT=new_node;
+		new_node->data=data;
+		new_node->NEXT=NULL;
+	}
 }
+
 void main()
 {
 	printf("\n Hello world \n");
